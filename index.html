@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AIと働く環境の立ち上げガイド</title>
 <style>
   :root {
@@ -145,6 +147,9 @@
   }
   body[data-os="mac"] .win { display: none; }
   body[data-os="win"] .mac { display: none; }
+  body[data-ai="claude"] .codex { display: none; }
+  body[data-ai="codex"] .claude { display: none; }
+  .switch-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
   ol.mini { margin: 8px 0 0; padding-left: 22px; }
   ol.mini li { margin: 6px 0; }
@@ -263,26 +268,33 @@
   <h1>AIと働く環境の立ち上げガイド</h1>
   <p class="lead">やることは3つだけ。<strong>アプリを入れる、作業場のもとを置く、ひとこと話しかける。</strong>あとはAIが道案内し、あなたの仕事の全体像がAddnessのゴール地図になるまで一気に進みます。所要は1時間半ほど、専門知識もターミナルもいりません。</p>
 
-  <div class="os-switch" role="group" aria-label="お使いのパソコン">
-    <button type="button" data-os="mac">Mac</button>
-    <button type="button" data-os="win">Windows</button>
+  <div class="switch-row">
+    <div class="os-switch" role="group" aria-label="お使いのパソコン">
+      <button type="button" data-os="mac">Mac</button>
+      <button type="button" data-os="win">Windows</button>
+    </div>
+    <div class="os-switch" role="group" aria-label="使うAIアプリ">
+      <button type="button" data-ai="claude">Claude</button>
+      <button type="button" data-ai="codex">Codex</button>
+    </div>
   </div>
-  <p class="fine">お使いのパソコンを選ぶと、関係する手順だけが表示されます。</p>
+  <p class="fine">お使いのパソコンと、使うAIアプリを選ぶと、関係する手順だけが表示されます。どちらのAIでも同じところまで行けます。迷ったらClaudeのままでOKです。</p>
 
   <section class="card">
     <h2>そろえるもの</h2>
     <ul class="plain">
-      <li>Claudeのアカウント（有料プラン：Pro以上。会社での導入はTeamプラン）</li>
+      <li class="claude">Claudeのアカウント（有料プラン：Pro以上。会社での導入はTeamプラン）</li>
+      <li class="codex">ChatGPTのアカウント（有料プラン：Plus以上。会社での導入はBusinessプラン）</li>
       <li>Addnessのアカウント（<a href="https://addness.com" target="_blank" rel="noopener">addness.com</a> にアクセスして登録するだけ）</li>
       <li>自分のパソコン（Mac、またはWindows 10・11）</li>
     </ul>
   </section>
 
   <section class="step">
-    <div class="step-head"><span class="step-num">1</span><h2>Claudeアプリを入れる</h2></div>
+    <div class="step-head"><span class="step-num">1</span><h2><span class="claude">Claudeアプリを入れる</span><span class="codex">Codexアプリを入れる</span></h2></div>
     <p class="why">話しかけるだけで、あなたのパソコン上で実際に作業をしてくれるAIです。</p>
 
-    <div class="os-block mac">
+    <div class="os-block mac claude">
       <p class="os-label">MACの場合</p>
       <a class="dl-btn" href="https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect"><span class="arr">↓</span>Mac用Claudeをダウンロード</a>
       <p class="dl-sub">Intel・Appleシリコンどちらでも動きます</p>
@@ -293,7 +305,7 @@
       </ol>
     </div>
 
-    <div class="os-block win">
+    <div class="os-block win claude">
       <p class="os-label">WINDOWSの場合</p>
       <a class="dl-btn" href="https://claude.ai/api/desktop/win32/x64/setup/latest/redirect"><span class="arr">↓</span>Windows用Claudeをダウンロード</a>
       <ol class="mini">
@@ -302,7 +314,29 @@
       </ol>
     </div>
 
-    <div class="check"><span class="mark">確認</span><span>Claudeアプリが開いてサインインでき、上部に <b>Chat / Cowork / Code</b> のタブが見えたらOKです。</span></div>
+    <div class="os-block mac codex">
+      <p class="os-label">MACの場合</p>
+      <a class="dl-btn" href="https://persistent.oaistatic.com/codex-app-prod/Codex.dmg"><span class="arr">↓</span>Mac用Codexをダウンロード</a>
+      <p class="dl-sub">OpenAI公式の配布ファイルです（Appleシリコン搭載Mac向け）</p>
+      <ol class="mini">
+        <li>ダウンロードしたファイルを開き、Codexのアイコンを「Applications」へドラッグ</li>
+        <li>アプリケーションからCodexを起動</li>
+        <li>ChatGPTのアカウントでサインイン</li>
+      </ol>
+    </div>
+
+    <div class="os-block win codex">
+      <p class="os-label">WINDOWSの場合</p>
+      <a class="dl-btn" href="https://apps.microsoft.com/detail/9plm9xgg6vks" target="_blank" rel="noopener"><span class="arr">↓</span>Microsoft StoreでCodexを入手</a>
+      <p class="dl-sub">OpenAI公式のストアページが開きます（アプリ名は「Codex」または「ChatGPT」と表示されます）</p>
+      <ol class="mini">
+        <li>開いたページで「入手」を押してインストール</li>
+        <li>インストールしたアプリを起動して、ChatGPTのアカウントでサインイン</li>
+      </ol>
+    </div>
+
+    <div class="check claude"><span class="mark">確認</span><span>Claudeアプリが開いてサインインでき、上部に <b>Chat / Cowork / Code</b> のタブが見えたらOKです。</span></div>
+    <div class="check codex"><span class="mark">確認</span><span>Codexアプリが開いて、ChatGPTのアカウントでサインインできたらOKです。</span></div>
   </section>
 
   <section class="step">
@@ -320,16 +354,21 @@
   <section class="step">
     <div class="step-head"><span class="step-num">3</span><h2>フォルダを開いて、ひとこと話しかける</h2></div>
     <p class="why">ここからはAIが道案内。画面に出ることに答えていくだけです。</p>
-    <ol class="mini">
+    <ol class="mini claude">
       <li>Claudeアプリ上部の「<strong>Code</strong>」タブをクリック</li>
       <li>「<strong>Local</strong>」を選び、「<strong>Select folder</strong>」で先ほどの「メイン作業場」を選ぶ</li>
       <li>下の入力欄に、最初のことばを入れて送信</li>
     </ol>
-    <div class="say"><span class="say-label">最初のことば</span><span class="say-text">セットアップを始めてください。</span><span class="say-actions"><button class="copy-btn" type="button">コピー</button><a class="open-btn" href="claude://code/new?q=%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E5%A7%8B%E3%82%81%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">Claudeで開く</a></span></div>
-    <p class="fine">「Claudeで開く」を押すと、Claudeアプリにこのことばが入った状態で開きます。開かない時は、コピーして入力欄に貼り付ければ同じです。</p>
+    <ol class="mini codex">
+      <li>Codexアプリで「<strong>New project</strong>（新しいプロジェクト）」をクリック</li>
+      <li>フォルダ選択で、先ほどの「<strong>メイン作業場</strong>」を選ぶ</li>
+      <li>下の入力欄に、最初のことばを入れて送信</li>
+    </ol>
+    <div class="say"><span class="say-label">最初のことば</span><span class="say-text">セットアップを始めてください。</span><span class="say-actions"><button class="copy-btn" type="button">コピー</button><a class="open-btn claude" href="claude://code/new?q=%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E5%A7%8B%E3%82%81%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">Claudeで開く</a><a class="open-btn codex" href="codex://threads/new?prompt=%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E5%A7%8B%E3%82%81%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">Codexで開く</a></span></div>
+    <p class="fine">ボタンを押すと、アプリにこのことばが入った状態で開きます。開かない時は、コピーして入力欄に貼り付ければ同じです。</p>
     <p>そのあとAIが、一本でここまで連れて行ってくれます：</p>
     <ul class="flow">
-      <li><b>Addnessと仕事のツールにつながる</b> — 接続のやり方を探すのもAIの仕事。頼まれたら、開いたブラウザでAddnessにログイン。普段使うツール（メールやカレンダーなど）もここでつなぎ、途中でClaudeアプリを一度再起動します</li>
+      <li><b>Addnessと仕事のツールにつながる</b> — 接続のやり方を探すのもAIの仕事。頼まれたら、開いたブラウザでAddnessにログイン。普段使うツール（メールやカレンダーなど）もここでつなぎ、途中でアプリを一度再起動します</li>
       <li><b>あなたを知る</b> — 呼び名を聞き、つないだツールとパソコンの中からAIが仕事の様子を読み取る</li>
       <li><b>仕事の全体像がゴール地図になる</b> — 動いている仕事を全部出してプロジェクトに束ね、Addnessのツリーに立てる。人に任せる仕事には担当者を付け、一緒に働く人の招待もここでできる</li>
       <li><b>昔のフォルダの引っ越しまで終わる</b> — 生きているファイルだけ新しい作業場へ。無ければそのまま完了</li>
@@ -340,7 +379,7 @@
   <section class="card">
     <h2>あしたからの合言葉</h2>
     <p class="why">立ち上げのあとは、朝これだけ言えば仕事が始まります。</p>
-    <div class="say"><span class="say-label">毎日のはじめかた</span><span class="say-text">Addnessのゴールの続きを、一緒に進めて。</span><span class="say-actions"><button class="copy-btn" type="button">コピー</button><a class="open-btn" href="claude://code/new?q=Addness%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%81%AE%E7%B6%9A%E3%81%8D%E3%82%92%E3%80%81%E4%B8%80%E7%B7%92%E3%81%AB%E9%80%B2%E3%82%81%E3%81%A6%E3%80%82">Claudeで開く</a></span></div>
+    <div class="say"><span class="say-label">毎日のはじめかた</span><span class="say-text">Addnessのゴールの続きを、一緒に進めて。</span><span class="say-actions"><button class="copy-btn" type="button">コピー</button><a class="open-btn claude" href="claude://code/new?q=Addness%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%81%AE%E7%B6%9A%E3%81%8D%E3%82%92%E3%80%81%E4%B8%80%E7%B7%92%E3%81%AB%E9%80%B2%E3%82%81%E3%81%A6%E3%80%82">Claudeで開く</a><a class="open-btn codex" href="codex://threads/new?prompt=Addness%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%81%AE%E7%B6%9A%E3%81%8D%E3%82%92%E3%80%81%E4%B8%80%E7%B7%92%E3%81%AB%E9%80%B2%E3%82%81%E3%81%A6%E3%80%82">Codexで開く</a></span></div>
   </section>
 
   <footer>
@@ -354,13 +393,23 @@
     var isMac = /Mac/.test(navigator.platform || "");
     function setOS(os) {
       document.body.dataset.os = os;
-      document.querySelectorAll(".os-switch button").forEach(function (b) {
+      document.querySelectorAll(".os-switch button[data-os]").forEach(function (b) {
         b.classList.toggle("active", b.dataset.os === os);
       });
     }
     setOS(isMac ? "mac" : "win");
-    document.querySelectorAll(".os-switch button").forEach(function (b) {
+    document.querySelectorAll(".os-switch button[data-os]").forEach(function (b) {
       b.addEventListener("click", function () { setOS(b.dataset.os); });
+    });
+    function setAI(ai) {
+      document.body.dataset.ai = ai;
+      document.querySelectorAll(".os-switch button[data-ai]").forEach(function (b) {
+        b.classList.toggle("active", b.dataset.ai === ai);
+      });
+    }
+    setAI("claude");
+    document.querySelectorAll(".os-switch button[data-ai]").forEach(function (b) {
+      b.addEventListener("click", function () { setAI(b.dataset.ai); });
     });
     document.querySelectorAll(".copy-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
